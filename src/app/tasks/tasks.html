@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="tasks-header">
+        <h2>Tasks</h2>
+        <button class="btn primary" (click)="displayNewTaskForm = true">+ New Task</button>
+    </div>
+
+    <div *ngIf="isLoading()" class="loading">Loading...</div>
+
+    <div *ngIf="!isLoading()">
+        <div *ngIf="tasks$ | async as tasks" class="task-list">
+            <div *ngFor="let t of tasks" class="task">
+                <h3>{{ t.title }}</h3>
+                <p>{{ t.content }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" *ngIf="displayNewTaskForm" (click)="displayNewTaskForm = false"></div>
+    <div class="new-task-form" *ngIf="displayNewTaskForm">
+        <div class="new-task" (click)="$event.stopPropagation()">
+            <button class="close" aria-label="Close" (click)="displayNewTaskForm = false">×</button>
+            <h3>Create New Task</h3>
+            <input [(ngModel)]="newTask.title"
+                   placeholder="Title"
+                   name="newTaskTitle"/>
+            <textarea [(ngModel)]="newTask.content"
+                      placeholder="Content"
+                      name="newTaskContent"></textarea>
+            <div class="actions">
+                <button class="btn" (click)="displayNewTaskForm = false">Cancel</button>
+                <button class="btn primary" (click)="createTask(); displayNewTaskForm = false">Add Task</button>
+            </div>
+        </div>
+    </div>
+</div>

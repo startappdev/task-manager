@@ -1,0 +1,63 @@
+/* Global styles moved from feature components (btn, overlay, inputs)
+   These are intentionally global to keep consistent look across the app. */
+
+/* Overlay (for modals) */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: saturate(120%) blur(1px);
+}
+
+/* Inputs */
+input,
+textarea {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  color: #111827;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Buttons */
+.btn {
+  --bg: #f3f4f6;
+  --fg: #111827;
+  --bg-hover: #e5e7eb;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--fg);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.15s ease, transform 0.02s ease;
+}
+
+.btn:hover { background: var(--bg-hover); }
+.btn:active { transform: translateY(1px); }
+
+.btn.primary {
+  --bg: #2563eb;
+  --fg: #fff;
+  --bg-hover: #1d4ed8;
+}
